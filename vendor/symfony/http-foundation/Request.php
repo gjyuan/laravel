@@ -631,6 +631,22 @@ class Request
     }
 
     /**
+     * Enables support for the _method request parameter to determine the intended HTTP method.
+     *
+     * Be warned that enabling this feature might lead to CSRF issues in your code.
+     * Check that you are using CSRF tokens when required.
+     * If the HTTP method parameter override is enabled, an html-form with method "POST" can be altered
+     * and used to send a "PUT" or "DELETE" request via the _method request parameter.
+     * If these methods are not protected against CSRF, this presents a possible vulnerability.
+     *
+     * The HTTP method can only be overridden when the real HTTP method is POST.
+     */
+    public static function enableHttpMethodParameterOverride()
+    {
+        self::$httpMethodParameterOverride = true;
+    }
+
+    /**
      * Normalizes a query string.
      *
      * It builds a normalized query string, where keys/value pairs are alphabetized,
@@ -671,22 +687,6 @@ class Request
         array_multisort($order, SORT_ASC, $parts);
 
         return implode('&', $parts);
-    }
-
-    /**
-     * Enables support for the _method request parameter to determine the intended HTTP method.
-     *
-     * Be warned that enabling this feature might lead to CSRF issues in your code.
-     * Check that you are using CSRF tokens when required.
-     * If the HTTP method parameter override is enabled, an html-form with method "POST" can be altered
-     * and used to send a "PUT" or "DELETE" request via the _method request parameter.
-     * If these methods are not protected against CSRF, this presents a possible vulnerability.
-     *
-     * The HTTP method can only be overridden when the real HTTP method is POST.
-     */
-    public static function enableHttpMethodParameterOverride()
-    {
-        self::$httpMethodParameterOverride = true;
     }
 
     /**

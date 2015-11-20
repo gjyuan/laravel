@@ -51,18 +51,29 @@ return [
             'database' => database_path('database.sqlite'),
             'prefix'   => '',
         ],
-
         'mysql' => [
             'driver'    => 'mysql',
-            'host'      => env('DB_HOST', 'localhost'),
-            'database'  => env('DB_DATABASE', 'Laravel'),
-            'username'  => env('DB_USERNAME', 'root'),
-            'password'  => env('DB_PASSWORD', '123456'),
+            'host'      =>  'localhost',
+            'database'  => 'Laravel',
+            'username'  =>  'root',
+            'password'  =>  '123456',
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',
             'strict'    => false,
         ],
+
+//        'mysql' => [
+//            'driver'    => 'mysql',
+//            'host'      => env('DB_HOST', 'localhost'),
+//            'database'  => env('DB_DATABASE', 'Laravel'),
+//            'username'  => env('DB_USERNAME', 'root'),
+//            'password'  => env('DB_PASSWORD', '123456'),
+//            'charset'   => 'utf8',
+//            'collation' => 'utf8_unicode_ci',
+//            'prefix'    => '',
+//            'strict'    => false,
+//        ],
 
         'pgsql' => [
             'driver'   => 'pgsql',
